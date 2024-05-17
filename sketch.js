@@ -31,6 +31,8 @@ function setup() {
   panel.style('background', '#000');
   panel.style('display', 'flex');
   panel.style('align-items', 'stretch');
+  panel.style("border-radius", "0 0 10px 10px")
+  panel.style("font-family", "monospace")
 
   pauseButton = createButton('PLAY');
   pauseButton.style('display', 'block');

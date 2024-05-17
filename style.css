@@ -10,6 +10,7 @@ body {
 canvas {
   display: block;
   box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+  border-radius: 10px 10px 0 0;
 }
 
 a {
@@ -30,6 +31,7 @@ a {
 }
 
 #sim-controllers {
+  flex-direction: column;
   font-family: 'Courier New', Courier, monospace;
   color: cadetblue;
   margin-top: auto;
