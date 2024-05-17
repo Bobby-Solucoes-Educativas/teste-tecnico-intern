@@ -7,7 +7,11 @@
     <title>Bobby - Game of life</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
     <script src="sketch.js"></script>
@@ -15,5 +19,65 @@
 
   <body>
     <div id="canvas_container"></div>
+    <section class="sideInfo">
+      <header>
+        <a href="https://www.linkedin.com/in/lucas-lopes-caldas" target="_blank"
+          ><i class="fab fa-linkedin"></i> LinkedIn</a
+        >
+        &nbsp;
+        <a href="https://github.com/LucasLopesCaldas" target="_blank"
+          ><i class="fab fa-github"></i> GitHub</a
+        >
+      </header>
+      <h1>Game of Life de Conway</h1>
+      <p>
+        O <strong>Game of Life</strong> é um autômato celular criado por John
+        Horton Conway em 1970. Ele consiste em um grid onde células podem estar
+        vivas ou mortas, evoluindo conforme regras simples.
+      </p>
+
+      <h3>Controles da simulação</h3>
+      <ul>
+        <li>Utilize o scroll do mouse para carregar padrões pré-definidos.</li>
+        <li>Utilize o botão esquerdo do mouse para desenhar.</li>
+      </ul>
+
+      <h3>Regras</h3>
+      <ul>
+        <li>
+          <strong>Sobrevivência:</strong> Célula viva com 2 ou 3 vizinhas vivas
+          permanece viva.
+        </li>
+        <li>
+          <strong>Solidão:</strong> Célula viva com menos de 2 vizinhas morre.
+        </li>
+        <li>
+          <strong>Superpopulação:</strong> Célula viva com mais de 3 vizinhas
+          morre.
+        </li>
+        <li>
+          <strong>Nascimento:</strong> Célula morta com exatamente 3 vizinhas
+          vivas torna-se viva.
+        </li>
+      </ul>
+
+      <h3>Padrões</h3>
+      <ul>
+        <li><strong>Vidas Estáveis:</strong> Não mudam, ex: bloco 2x2.</li>
+        <li>
+          <strong>Osciladores:</strong> Alternam entre estados, ex: pisca-pisca.
+        </li>
+        <li><strong>Naves:</strong> Movem-se pelo grid, ex: glider.</li>
+      </ul>
+
+      <h3>Importância</h3>
+      <ul>
+        <li>
+          <strong>Computação:</strong> Pode simular um computador universal.
+        </li>
+        <li><strong>Biologia:</strong> Modela emergência de complexidade.</li>
+        <li><strong>Arte:</strong> Inspira obras e design.</li>
+      </ul>
+    </section>
   </body>
 </html>

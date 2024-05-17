@@ -10,3 +10,14 @@ body {
 canvas {
   display: block;
 }
+
+a {
+  color: lightgreen;
+}
+
+.sideInfo {
+  margin: 25px;
+  color: lightgray;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
