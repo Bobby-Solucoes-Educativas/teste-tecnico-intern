@@ -1,4 +1,5 @@
 const PANEL_SIZE = 30;
+const CANVAS_MARGIN = 50;
 
 let canvasSize = 600;
 let gridSize = 100;
@@ -154,7 +155,7 @@ function computeCanvasSize() {
     resizeCanvas(canvasSize, canvasSize);
   }
 
-  canvasSize = min(innerHeight - PANEL_SIZE, innerWidth);
+  canvasSize = min(innerHeight - PANEL_SIZE, innerWidth) - CANVAS_MARGIN;
 }
 
 function updatePanel() {
