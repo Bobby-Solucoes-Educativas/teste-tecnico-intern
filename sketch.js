@@ -126,6 +126,27 @@ function countNeighbors(i, j, grid) {
   return count;
 }
 
+
+function mousePressed() { // Define a célula clicada como viva ao clicar
+  const gridPosX = int((mouseX / canvasSize) * gridSize);
+  const gridPosY = int((mouseY / canvasSize) * gridSize);
+  setPresentAliveCell(gridPosX, gridPosY);
+}
+
+
+function mouseDragged() { // Define a célula clicada como viva ao arrastar
+  const gridPosX = int((mouseX / canvasSize) * gridSize);
+  const gridPosY = int((mouseY / canvasSize) * gridSize);
+  setPresentAliveCell(gridPosX, gridPosY);
+}
+
+
+function setPresentAliveCell(i, j) { // Define a célula especificada como viva no presente
+  if (i < gridSize && j < gridSize && i >= 0 && j >= 0) {
+    present[i][j] = 1;
+  }
+}
+
 function updatePanel() {
   panel.size(canvasSize, PANEL_SIZE);
   pauseButton.html(paused ? 'PLAY' : 'PAUSE');
