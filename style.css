@@ -17,6 +17,8 @@ a {
 }
 
 .sideInfo {
+  display: flex;
+  flex-direction: column;
   margin: 25px 0;
   color: lightgray;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
@@ -25,4 +27,10 @@ a {
 
 #canvas_container {
   margin: 25px;
+}
+
+#sim-controllers {
+  font-family: 'Courier New', Courier, monospace;
+  color: cadetblue;
+  margin-top: auto;
 }

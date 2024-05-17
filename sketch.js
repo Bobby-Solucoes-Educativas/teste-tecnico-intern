@@ -3,26 +3,28 @@ const CANVAS_MARGIN = 50;
 
 let canvasSize = 600;
 let gridSize = 100;
-let paused = true;
+let paused = false;
 let present = new Array(); // Grid contendo o instante atual de tempo
 let panel, pauseButton, resetButton, gridSizeInput; // Elementos de controle
 
+let pattern = 0;
+
 function setupGrid(size) {
   // Retorna um novo grid
-  const grid = Array.from({ length: size }, () => Array(size).fill(0));
-  for (let j = 0; j < size; j++) {
-    for (let i = 0; i < size; i++) {
-      grid[i][j] = round(random());
-    }
-  }
-  return grid;
+  return Array.from({ length: size }, () => Array(size).fill(0));
 }
 
 function setup() {
-  // Inicializando o canvas
+  // Inicializando o canvas e os controles
   const cnv = createCanvas(canvasSize, canvasSize);
   cnv.parent('canvas_container');
   present = setupGrid(gridSize);
+
+  for (let j = 0; j < gridSize; j++) {
+    for (let i = 0; i < gridSize; i++) {
+      present[i][j] = round(random() * 0.6);
+    }
+  }
 
   panel = createDiv();
   panel.parent('canvas_container');
@@ -173,3 +175,41 @@ function reset() {
 function playPause() {
   paused = !paused;
 }
+
+function setPattern(index) {
+  // Desenha um padrão da lista no indice especificado
+  reset();
+  PATTERNS[index].forEach((item) => {
+    setPresentAliveCell(gridSize / 2 + item[0], gridSize / 2 + item[1]);
+  });
+  playPause();
+}
+
+function mouseWheel() {
+  setPattern(pattern % PATTERNS.length);
+  pattern++;
+}
+
+// prettier-ignore
+const PATTERNS = [ // Padrões predefinidos
+  [[0, 1], [1, 3], [2, 0], [2, 1], [2, 4], [2, 5], [2, 6]],
+  [[0, 6], [1, 0], [1, 1], [2, 1], [2, 5], [2, 6], [2, 7]],
+  [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7],
+    [0, 9], [0, 10], [0, 11], [0, 12], [0, 13],
+    [0, 17], [0, 18], [0, 19],
+    [0, 26], [0, 27], [0, 28], [0, 29], [0, 30], [0, 31],
+    [0, 33], [0, 34], [0, 35], [0, 36], [0, 37]],
+  [[0, 6], [1, 4], [1, 6], [1, 7], [2, 4], [2, 6], [3, 4], [4, 2], [5, 0], [5, 2]],
+  [[-1, 0], [-1, 1], [0, -1], [0, 0], [1, 0]],
+  [[-1, 0], [0, 1], [1, -1], [1, 0], [1, 1]],
+  [[-1, -1], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 1], [2, 0]],
+  [[-2, -1], [-2, 0], [-2, 1], [-2, 2], [-1, -2], [-1, 2], [0, 2], [1, -2], [1, 1]],
+  [[0, -4], [0, -3], [0, -2], [0, -1], [0, 0], [0, 1], [0, 2], [0, 3], [0, 4],[0, 5]],
+  [[0, -18], [0, -17], [1, -18], [1, -17], [0, -8], [1, -8], [2, -8], [-1, -7],
+    [-2, -6], [-2, -5], [3, -7], [4, -6], [4, -5], [1, -4], [-1, -3], [0, -2], [1, -2],
+    [2, -2], [1, -1], [3, -3], [-2, 2], [-1, 2], [0, 2], [-2, 3], [-1, 3], [0, 3], [-3, 4],
+    [1, 4], [-4, 6], [-3, 6], [1, 6], [2, 6], [-2, 16], [-1, 16], [-2, 17], [-1, 17]],
+  [[-3, -9], [-3, -8], [-3, -7], [-3, 5], [-3, 6], [-3, 7], [-2, -10], [-2, -7],
+    [-2, 4], [-2, 7], [-1, -7], [-1, -2], [-1, -1], [-1, 0], [-1, 7], [0, -7], [0, -2], [0, 1],
+    [0, 7], [1, -8], [1, -3], [1, 6]],
+];
