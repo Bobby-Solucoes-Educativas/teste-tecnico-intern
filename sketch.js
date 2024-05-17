@@ -1,6 +1,10 @@
+const PANEL_SIZE = 30;
+
 let canvasSize = 600;
 let gridSize = 100;
+let paused = true;
 let present = new Array(); // Grid contendo o instante atual de tempo
+let panel, pauseButton, resetButton, gridSizeInput; // Elementos de controle
 
 function setupGrid(size) {
   // Retorna um novo grid
@@ -18,6 +22,34 @@ function setup() {
   const cnv = createCanvas(canvasSize, canvasSize);
   cnv.parent('canvas_container');
   present = setupGrid(gridSize);
+
+  panel = createDiv();
+  panel.parent('canvas_container');
+  panel.style('background', '#000');
+  panel.style('display', 'flex');
+  panel.style('align-items', 'stretch');
+
+  pauseButton = createButton('PLAY');
+  pauseButton.style('display', 'block');
+  pauseButton.parent(panel);
+  pauseButton.mousePressed(playPause);
+
+  resetButton = createButton('RESET');
+  resetButton.style('display', 'block');
+  resetButton.parent(panel);
+  resetButton.mousePressed(reset);
+
+  const sizeLabel = createDiv('Grid Size: &nbsp;');
+  sizeLabel.style('display', 'block');
+  sizeLabel.parent(panel);
+  sizeLabel.style('color', 'white');
+  sizeLabel.style('display', 'flex');
+  sizeLabel.style('align-items', 'center');
+  sizeLabel.style('margin-left', '10px');
+
+  gridSizeInput = createInput('100');
+  gridSizeInput.style('display', 'block');
+  gridSizeInput.parent(panel);
 }
 
 function draw() {
@@ -38,7 +70,8 @@ function draw() {
     }
   }
 
-  present = future;
+  if (!paused) present = future;
+  updatePanel();
 }
 
 /** 
@@ -91,4 +124,19 @@ function countNeighbors(i, j, grid) {
   if (cell(i + 1, j - 1, grid) === 1) count++;
   if (cell(i, j - 1, grid) === 1) count++;
   return count;
+}
+
+function updatePanel() {
+  panel.size(canvasSize, PANEL_SIZE);
+  pauseButton.html(paused ? 'PLAY' : 'PAUSE');
+  if (int(gridSizeInput.value()) >= 10) gridSize = int(gridSizeInput.value());
+}
+
+function reset() { // Reinicia e pausa
+  present = setupGrid(gridSize);
+  paused = true;
+}
+
+function playPause() {
+  paused = !paused;
 }
