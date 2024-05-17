@@ -22,8 +22,12 @@ Os testes são realizados utilizando o framework Jasmine. Para executá-los:
 2. Inicialize um servidor local, por exemplo, utilizando o Live Server.
 3. Acesse `/SpecRunner.html` no servidor.
 
+Ou acesse uma [demo](https://lucaslopescaldas.github.io/teste-tecnico-intern/SpecRunner)
+
 ## Instalação e Uso
 
 1. Clone este repositório para o seu computador.
 1. Inicialize um servidor local, por exemplo, utilizando o Live Server.
 2. Acesse `/index.html` no servidor.
+
+Ou acesse uma [demo](https://lucaslopescaldas.github.io/teste-tecnico-intern/)
