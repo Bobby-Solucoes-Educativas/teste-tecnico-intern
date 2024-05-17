@@ -90,7 +90,7 @@ function computeCell(i, j, present, future) {
 
   future[i][j] = cell(i, j, present);
 
-  if (cellLife === 1 && (neighborCount === 2 || neighborCount === 3)) {
+  if (cellLife === 1 && neighborCount === 3) {
     future[i][j] = 1;
   }
 
@@ -111,8 +111,8 @@ function drawCell(i, j, grid) {
 
 function cell(i, j, grid) {
   // Retorna a célula do grid na posição especificada
-  if (grid[abs(i) % gridSize] !== undefined) {
-    return grid[abs(i) % gridSize][abs(j) % gridSize];
+  if (grid[Math.abs(i) % gridSize] !== undefined) {
+    return grid[Math.abs(i) % gridSize][Math.abs(j) % gridSize];
   }
   return 0;
 }
