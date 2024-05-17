@@ -71,6 +71,7 @@ function draw() {
   }
 
   if (!paused) present = future;
+  computeCanvasSize();
   updatePanel();
 }
 
@@ -126,25 +127,34 @@ function countNeighbors(i, j, grid) {
   return count;
 }
 
-
-function mousePressed() { // Define a célula clicada como viva ao clicar
+function mousePressed() {
+  // Define a célula clicada como viva ao clicar
   const gridPosX = int((mouseX / canvasSize) * gridSize);
   const gridPosY = int((mouseY / canvasSize) * gridSize);
   setPresentAliveCell(gridPosX, gridPosY);
 }
 
-
-function mouseDragged() { // Define a célula clicada como viva ao arrastar
+function mouseDragged() {
+  // Define a célula clicada como viva ao arrastar
   const gridPosX = int((mouseX / canvasSize) * gridSize);
   const gridPosY = int((mouseY / canvasSize) * gridSize);
   setPresentAliveCell(gridPosX, gridPosY);
 }
 
-
-function setPresentAliveCell(i, j) { // Define a célula especificada como viva no presente
+function setPresentAliveCell(i, j) {
+  // Define a célula especificada como viva no presente
   if (i < gridSize && j < gridSize && i >= 0 && j >= 0) {
     present[i][j] = 1;
   }
+}
+
+function computeCanvasSize() {
+  // Altera o tamanho do canvas
+  if (height != canvasSize) {
+    resizeCanvas(canvasSize, canvasSize);
+  }
+
+  canvasSize = min(innerHeight - PANEL_SIZE, innerWidth);
 }
 
 function updatePanel() {
@@ -153,7 +163,8 @@ function updatePanel() {
   if (int(gridSizeInput.value()) >= 10) gridSize = int(gridSizeInput.value());
 }
 
-function reset() { // Reinicia e pausa
+function reset() {
+  // Reinicia e pausa
   present = setupGrid(gridSize);
   paused = true;
 }
