@@ -35,3 +35,4 @@ Ou acesse uma [demo](https://lucaslopescaldas.github.io/teste-tecnico-bobby-solu
 ## Simulador de Areia
 
 Além do projeto principal, também desenvolvi um Simulador de Areia, utilizando parte do código deste projeto como base. Você pode acessá-lo [aqui](https://lucaslopescaldas.github.io/sand-simulator/).
+Repositório [aqui](https://github.com/lucaslopescaldas/sand-simulator/)
